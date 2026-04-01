@@ -2,12 +2,19 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { navLinks, siteContent } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
+import { locales, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export function Navbar() {
+interface NavbarProps {
+  content: LocaleContent;
+  locale: Locale;
+}
+
+export function Navbar({ content, locale }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { navLinks, siteContent } = content;
 
   useEffect(() => {
     const onScroll = () => {
@@ -56,6 +63,26 @@ export function Navbar() {
           {siteContent.navbar.contactLabel}
         </Link>
 
+        <div
+          className="hidden items-center gap-2 md:flex"
+          aria-label={siteContent.navbar.languageLabel}
+        >
+          {locales.map((language) => (
+            <Link
+              key={language}
+              href={`/${language}`}
+              className={cn(
+                "rounded-full border px-3 py-1 font-body text-xs font-semibold uppercase tracking-wider",
+                language === locale
+                  ? "border-brand-red bg-brand-red text-black"
+                  : "border-white text-white"
+              )}
+            >
+              {language}
+            </Link>
+          ))}
+        </div>
+
         <button
           type="button"
           className="md:hidden"
@@ -94,6 +121,28 @@ export function Navbar() {
               >
                 {siteContent.navbar.contactLabel}
               </Link>
+            </li>
+            <li className="pt-2">
+              <p className="mb-2 font-body text-xs uppercase tracking-wider text-white/80">
+                {siteContent.navbar.languageLabel}
+              </p>
+              <div className="flex gap-2">
+                {locales.map((language) => (
+                  <Link
+                    key={language}
+                    href={`/${language}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={cn(
+                      "rounded-full border px-3 py-1 font-body text-xs font-semibold uppercase tracking-wider",
+                      language === locale
+                        ? "border-brand-red bg-brand-red text-black"
+                        : "border-white text-white"
+                    )}
+                  >
+                    {language}
+                  </Link>
+                ))}
+              </div>
             </li>
           </ul>
         </div>

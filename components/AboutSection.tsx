@@ -1,8 +1,14 @@
 import Image from "next/image";
 import { Starburst } from "@/components/ui/Starburst";
-import { siteContent } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
 
-export function AboutSection() {
+interface AboutSectionProps {
+  content: LocaleContent;
+}
+
+export function AboutSection({ content }: AboutSectionProps) {
+  const { siteContent } = content;
+
   return (
     <section
       id={siteContent.about.sectionId}

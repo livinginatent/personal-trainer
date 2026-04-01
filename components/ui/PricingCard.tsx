@@ -1,13 +1,18 @@
-import { siteContent } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
 import type { PricingPlan } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 interface PricingCardProps {
   plan: PricingPlan;
   featured?: boolean;
+  siteContent: LocaleContent["siteContent"];
 }
 
-export function PricingCard({ plan, featured = false }: PricingCardProps) {
+export function PricingCard({
+  plan,
+  featured = false,
+  siteContent,
+}: PricingCardProps) {
   const isFeatured = featured || Boolean(plan.featured);
 
   return (

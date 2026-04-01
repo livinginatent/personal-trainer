@@ -1,7 +1,13 @@
 import Link from "next/link";
-import { footerLinks, footerSocialLinks, siteContent } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
 
-export function Footer() {
+interface FooterProps {
+  content: LocaleContent;
+}
+
+export function Footer({ content }: FooterProps) {
+  const { footerLinks, footerSocialLinks, siteContent } = content;
+
   return (
     <footer className="bg-brand-black px-4 pb-8 pt-16 text-white">
       <div className="mx-auto w-full max-w-7xl">

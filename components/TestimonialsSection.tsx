@@ -1,10 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { siteContent, testimonials } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-export function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  content: LocaleContent;
+}
+
+export function TestimonialsSection({ content }: TestimonialsSectionProps) {
+  const { siteContent, testimonials } = content;
   const [index, setIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
 

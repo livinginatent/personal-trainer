@@ -3,9 +3,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaqItem } from "@/components/ui/FaqItem";
-import { faqItems, siteContent } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
 
-export function FaqSection() {
+interface FaqSectionProps {
+  content: LocaleContent;
+}
+
+export function FaqSection({ content }: FaqSectionProps) {
+  const { faqItems, siteContent } = content;
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
@@ -33,6 +38,8 @@ export function FaqSection() {
               index={itemIndex}
               question={item.question}
               answer={item.answer}
+              expandLabel={siteContent.faq.expandLabel}
+              collapseLabel={siteContent.faq.collapseLabel}
               isOpen={openIndex === itemIndex}
               onToggle={() =>
                 setOpenIndex((prev) => (prev === itemIndex ? -1 : itemIndex))

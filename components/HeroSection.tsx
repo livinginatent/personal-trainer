@@ -1,10 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { heroStats, siteContent } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
 import { Starburst } from "@/components/ui/Starburst";
 import { StatBadge } from "@/components/ui/StatBadge";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  content: LocaleContent;
+}
+
+export function HeroSection({ content }: HeroSectionProps) {
+  const { heroStats, siteContent } = content;
+
   return (
     <section
       id={siteContent.hero.sectionId}

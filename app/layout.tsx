@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
+import { defaultLocale } from "@/lib/i18n";
 import "./globals.css";
 
 const displayFont = Bebas_Neue({
@@ -14,13 +15,14 @@ const bodyFont = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "JULIEFIT | Steve Smith Personal Trainer",
+  title: "JULIEFIT",
   description:
-    "JULIEFIT by Steve Smith. Personal training programs, client results, and coaching plans built for real progress.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
+    "JULIEFIT personal training platform.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -30,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang={defaultLocale}
       className={`${displayFont.variable} ${bodyFont.variable} antialiased`}
     >
       <body className="min-h-screen bg-brand-black font-body text-white">

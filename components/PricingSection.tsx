@@ -1,7 +1,13 @@
 import { PricingCard } from "@/components/ui/PricingCard";
-import { pricingPlans, siteContent } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
 
-export function PricingSection() {
+interface PricingSectionProps {
+  content: LocaleContent;
+}
+
+export function PricingSection({ content }: PricingSectionProps) {
+  const { pricingPlans, siteContent } = content;
+
   return (
     <section
       id={siteContent.pricing.sectionId}
@@ -13,7 +19,12 @@ export function PricingSection() {
         </h2>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {pricingPlans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} featured={plan.featured} />
+            <PricingCard
+              key={plan.name}
+              plan={plan}
+              featured={plan.featured}
+              siteContent={siteContent}
+            />
           ))}
         </div>
       </div>

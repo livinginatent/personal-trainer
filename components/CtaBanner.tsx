@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { Sunburst } from "@/components/ui/Sunburst";
-import { siteContent } from "@/lib/data";
+import type { LocaleContent } from "@/lib/data";
 
-export function CtaBanner() {
+interface CtaBannerProps {
+  content: LocaleContent;
+}
+
+export function CtaBanner({ content }: CtaBannerProps) {
+  const { siteContent } = content;
+
   return (
     <section
       id={siteContent.ctaBanner.sectionId}

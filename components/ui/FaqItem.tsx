@@ -1,10 +1,11 @@
-import { siteContent } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 interface FaqItemProps {
   index: number;
   question: string;
   answer: string;
+  expandLabel: string;
+  collapseLabel: string;
   isOpen: boolean;
   onToggle: () => void;
 }
@@ -13,13 +14,13 @@ export function FaqItem({
   index,
   question,
   answer,
+  expandLabel,
+  collapseLabel,
   isOpen,
   onToggle,
 }: FaqItemProps) {
   const itemNumber = String(index + 1).padStart(2, "0");
-  const buttonLabel = isOpen
-    ? siteContent.faq.collapseLabel
-    : siteContent.faq.expandLabel;
+  const buttonLabel = isOpen ? collapseLabel : expandLabel;
 
   return (
     <article className="border-b border-brand-red py-6">
