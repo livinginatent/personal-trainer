@@ -28,10 +28,10 @@ export function AboutSection({ content }: AboutSectionProps) {
         <div className="flex flex-col justify-center">
           <h2 className="font-display text-6xl uppercase leading-none sm:text-7xl">
             <span className="block text-white">{siteContent.about.headingLines[0]}</span>
-            <span className="block text-brand-red">
+            <span className="mt-2 block text-brand-red">
               {siteContent.about.headingLines[1]}
             </span>
-            <span className="block text-brand-red">
+            <span className="mt-2 block text-brand-red">
               {siteContent.about.headingLines[2]}
             </span>
           </h2>

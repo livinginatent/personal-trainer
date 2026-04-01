@@ -47,7 +47,7 @@ export function Navbar({ content, locale }: NavbarProps) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="font-body text-sm uppercase tracking-wide transition-colors hover:text-brand-red"
+                className="font-body text-sm tracking-wide transition-colors hover:text-brand-red"
               >
                 {link.label}
               </Link>
@@ -107,7 +107,7 @@ export function Navbar({ content, locale }: NavbarProps) {
                 <Link
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block font-body text-sm uppercase tracking-wide text-white"
+                  className="block font-body text-sm tracking-wide text-white"
                 >
                   {link.label}
                 </Link>

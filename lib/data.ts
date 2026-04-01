@@ -46,16 +46,16 @@ export const localizedContent = {
     siteContent: {
       symbols: sharedSymbols,
       brand: {
-        name: "JULIEFIT",
-        trainerName: "Steve Smith",
+        name: "ASHURXFIT.AZ",
+        trainerName: "Ashur",
         footerRights: "Bütün hüquqlar qorunur.",
         privacyLabel: "Məxfilik Siyasəti",
         privacyHref: "/privacy",
       },
       metadata: {
-        title: "JULIEFIT | Steve Smith Şəxsi Məşqçi",
+        title: "ASHURXFIT.AZ | Ashur Şəxsi Məşqçi",
         description:
-          "Steve Smith-dən fərdi məşq proqramları, real nəticələr və davamlı inkişaf üçün kouçinq planları.",
+          "ashurxfit.az-da Ashur-dan fərdi məşq proqramları, real nəticələr və davamlı inkişaf üçün kouçinq planları.",
       },
       navbar: {
         contactLabel: "ƏLAQƏ",
@@ -69,18 +69,18 @@ export const localizedContent = {
         sectionId: "home",
         headline: "SƏRT MƏŞQ ET. İNTİZAMLI QAL. GÜCLÜ YAŞA.",
         subtext:
-          "Güc, dözümlülük və davamlılıq qurmağın üçün Steve Smith-dən fərdiləşdirilmiş fitnes kouçinqi.",
+          "Güc, dözümlülük və davamlılıq qurmağın üçün Ashur-dan fərdiləşdirilmiş fitnes kouçinqi.",
         ctaLabel: "İNDİ QOŞUL",
         ctaHref: "#pricing",
         imageSrc: "/images/trainer-placeholder.svg",
-        imageAlt: "Steve Smith məşq portreti üçün yer tutucu şəkil",
+        imageAlt: "Ashur məşq portreti üçün yer tutucu şəkil",
       },
       about: {
         sectionId: "about",
         imageSrc: "/images/about-placeholder.svg",
-        imageAlt: "Steve Smith-in müştəriyə kouçinq etməsi üçün yer tutucu şəkil",
+        imageAlt: "Ashur-un müştəriyə kouçinq etməsi üçün yer tutucu şəkil",
         headingLines: ["MƏQSƏDLƏRİN", "ÜÇÜN", "MƏŞQÇİLİK"],
-        body: "JULIEFIT praktik proqramlaşdırmanı hesabatlılıqla birləşdirir. Hər plan qrafikinə, təcrübə səviyyənə və ölçülə bilən nəticələrə uyğun hazırlanır.",
+        body: "ASHURXFIT.AZ praktik proqramlaşdırmanı hesabatlılıqla birləşdirir. Hər plan qrafikinə, təcrübə səviyyənə və ölçülə bilən nəticələrə uyğun hazırlanır.",
       },
       pricing: {
         sectionId: "pricing",
@@ -98,7 +98,7 @@ export const localizedContent = {
       faq: {
         sectionId: "faq",
         title: "TEZ-TEZ VERİLƏN SUALLAR",
-        contactLabel: "STEVE İLƏ ƏLAQƏ",
+        contactLabel: "ASHUR İLƏ ƏLAQƏ",
         contactHref: "#contact",
         expandLabel: "Sualı aç",
         collapseLabel: "Sualı bağla",
@@ -116,7 +116,7 @@ export const localizedContent = {
         emailLabel: "E-poçt",
         phoneLabel: "Telefon",
         locationLabel: "Ünvan",
-        emailValue: "coach@stevefit.com",
+        emailValue: "coach@ashurxfit.az",
         phoneValue: "+1 (555) 214-7780",
         locationValue: "Austin, Texas",
       },
@@ -165,7 +165,7 @@ export const localizedContent = {
     testimonials: [
       {
         quote:
-          "Steve idmanda özümə inamımı yenidən qurdu. Dörd aydan az müddətdə 18 funt çəki itirdim və görünən güc qazandım.",
+          "Ashur idmanda özümə inamımı yenidən qurdu. Dörd aydan az müddətdə 18 funt çəki itirdim və görünən güc qazandım.",
         name: "Maya L.",
         avatar: "M",
       },
@@ -177,7 +177,7 @@ export const localizedContent = {
       },
       {
         quote:
-          "İş üçün tez-tez səyahət etsəm də, Steve proqramımı hər həftə cədvəlimə uyğunlaşdırdığı üçün irəliləyiş əldə etdim.",
+          "İş üçün tez-tez səyahət etsəm də, Ashur proqramımı hər həftə cədvəlimə uyğunlaşdırdığı üçün irəliləyiş əldə etdim.",
         name: "Avery K.",
         avatar: "A",
       },
@@ -186,7 +186,7 @@ export const localizedContent = {
       {
         question: "Həftədə neçə dəfə məşq etməliyəm?",
         answer:
-          "Müştərilərin çoxu həftədə üç-dörd məşqlə başlayır. Steve həcmi qrafikinə, bərpana və məqsədlərinə uyğun tənzimləyir.",
+          "Müştərilərin çoxu həftədə üç-dörd məşqlə başlayır. Ashur həcmi qrafikinə, bərpana və məqsədlərinə uyğun tənzimləyir.",
       },
       {
         question: "Qoşulmaq üçün idman zalına çıxışım olmalıdır?",
@@ -220,16 +220,16 @@ export const localizedContent = {
     siteContent: {
       symbols: sharedSymbols,
       brand: {
-        name: "JULIEFIT",
-        trainerName: "Steve Smith",
+        name: "ASHURXFIT.AZ",
+        trainerName: "Ashur",
         footerRights: "Все права защищены.",
         privacyLabel: "Политика конфиденциальности",
         privacyHref: "/privacy",
       },
       metadata: {
-        title: "JULIEFIT | Персональный тренер Steve Smith",
+        title: "ASHURXFIT.AZ | Персональный тренер Ashur",
         description:
-          "Персональные тренировочные программы, результаты клиентов и коучинг от Steve Smith для стабильного прогресса.",
+          "Персональные тренировочные программы, результаты клиентов и коучинг от Ashur на ashurxfit.az для стабильного прогресса.",
       },
       navbar: {
         contactLabel: "КОНТАКТЫ",
@@ -243,18 +243,18 @@ export const localizedContent = {
         sectionId: "home",
         headline: "ТРЕНИРУЙСЯ ЖЕСТКО. СОХРАНЯЙ ФОКУС. ЖИВИ СИЛЬНО.",
         subtext:
-          "Персональный фитнес-коучинг от Steve Smith, чтобы развивать силу, выносливость и стабильность.",
+          "Персональный фитнес-коучинг от Ashur, чтобы развивать силу, выносливость и стабильность.",
         ctaLabel: "ПРИСОЕДИНИТЬСЯ",
         ctaHref: "#pricing",
         imageSrc: "/images/trainer-placeholder.svg",
-        imageAlt: "Портрет Steve Smith во время тренировки",
+        imageAlt: "Портрет Ashur во время тренировки",
       },
       about: {
         sectionId: "about",
         imageSrc: "/images/about-placeholder.svg",
-        imageAlt: "Steve Smith тренирует клиента",
+        imageAlt: "Ashur тренирует клиента",
         headingLines: ["КОУЧИНГ", "ПОД ТВОИ", "ЦЕЛИ"],
-        body: "JULIEFIT сочетает практичные программы и ответственность. Каждый план создается под твое расписание, уровень подготовки и измеримые результаты.",
+        body: "ASHURXFIT.AZ сочетает практичные программы и ответственность. Каждый план создается под твое расписание, уровень подготовки и измеримые результаты.",
       },
       pricing: {
         sectionId: "pricing",
@@ -272,7 +272,7 @@ export const localizedContent = {
       faq: {
         sectionId: "faq",
         title: "FAQ",
-        contactLabel: "СВЯЗАТЬСЯ СО STEVE",
+        contactLabel: "СВЯЗАТЬСЯ С ASHUR",
         contactHref: "#contact",
         expandLabel: "Открыть вопрос",
         collapseLabel: "Свернуть вопрос",
@@ -290,7 +290,7 @@ export const localizedContent = {
         emailLabel: "Email",
         phoneLabel: "Телефон",
         locationLabel: "Локация",
-        emailValue: "coach@stevefit.com",
+        emailValue: "coach@ashurxfit.az",
         phoneValue: "+1 (555) 214-7780",
         locationValue: "Austin, Texas",
       },
@@ -339,7 +339,7 @@ export const localizedContent = {
     testimonials: [
       {
         quote:
-          "Steve вернул мне уверенность в зале. Я сбросила 18 фунтов и заметно стала сильнее меньше чем за четыре месяца.",
+          "Ashur вернул мне уверенность в зале. Я сбросила 18 фунтов и заметно стала сильнее меньше чем за четыре месяца.",
         name: "Maya L.",
         avatar: "M",
       },
@@ -351,7 +351,7 @@ export const localizedContent = {
       },
       {
         quote:
-          "Я часто в командировках, но все равно прогрессировал, потому что Steve каждую неделю адаптировал план под мой график.",
+          "Я часто в командировках, но все равно прогрессировал, потому что Ashur каждую неделю адаптировал план под мой график.",
         name: "Avery K.",
         avatar: "A",
       },
@@ -360,7 +360,7 @@ export const localizedContent = {
       {
         question: "Сколько раз в неделю мне тренироваться?",
         answer:
-          "Большинство клиентов начинают с трех-четырех тренировок в неделю. Steve регулирует объем под твой график, восстановление и цели.",
+          "Большинство клиентов начинают с трех-четырех тренировок в неделю. Ashur регулирует объем под твой график, восстановление и цели.",
       },
       {
         question: "Нужен ли доступ в спортзал, чтобы начать?",
@@ -394,16 +394,16 @@ export const localizedContent = {
     siteContent: {
       symbols: sharedSymbols,
       brand: {
-        name: "JULIEFIT",
-        trainerName: "Steve Smith",
+        name: "ASHURXFIT.AZ",
+        trainerName: "Ashur",
         footerRights: "All rights reserved.",
         privacyLabel: "Privacy Policy",
         privacyHref: "/privacy",
       },
       metadata: {
-        title: "JULIEFIT | Steve Smith Personal Trainer",
+        title: "ASHURXFIT.AZ | Ashur Personal Trainer",
         description:
-          "JULIEFIT by Steve Smith. Personal training programs, client results, and coaching plans built for real progress.",
+          "ASHURXFIT.AZ by Ashur. Personal training programs, client results, and coaching plans built for real progress.",
       },
       navbar: {
         contactLabel: "CONTACT",
@@ -417,18 +417,18 @@ export const localizedContent = {
         sectionId: "home",
         headline: "TRAIN HARD. STAY SHARP. LIVE STRONG.",
         subtext:
-          "Personalized fitness coaching from Steve Smith to help you build strength, endurance, and consistency.",
+          "Personalized fitness coaching from Ashur to help you build strength, endurance, and consistency.",
         ctaLabel: "JOIN NOW",
         ctaHref: "#pricing",
         imageSrc: "/images/trainer-placeholder.svg",
-        imageAlt: "Steve Smith training portrait placeholder",
+        imageAlt: "Ashur training portrait placeholder",
       },
       about: {
         sectionId: "about",
         imageSrc: "/images/about-placeholder.svg",
-        imageAlt: "Steve Smith coaching a client placeholder",
+        imageAlt: "Ashur coaching a client placeholder",
         headingLines: ["COACHING", "BUILT FOR", "YOUR GOALS"],
-        body: "JULIEFIT combines practical programming with accountability. Every plan is designed around your schedule, experience level, and measurable outcomes.",
+        body: "ASHURXFIT.AZ combines practical programming with accountability. Every plan is designed around your schedule, experience level, and measurable outcomes.",
       },
       pricing: {
         sectionId: "pricing",
@@ -446,7 +446,7 @@ export const localizedContent = {
       faq: {
         sectionId: "faq",
         title: "FAQ",
-        contactLabel: "CONTACT STEVE",
+        contactLabel: "CONTACT ASHUR",
         contactHref: "#contact",
         expandLabel: "Expand FAQ item",
         collapseLabel: "Collapse FAQ item",
@@ -464,16 +464,16 @@ export const localizedContent = {
         emailLabel: "Email",
         phoneLabel: "Phone",
         locationLabel: "Location",
-        emailValue: "coach@stevefit.com",
+        emailValue: "coach@ashurxfit.az",
         phoneValue: "+1 (555) 214-7780",
         locationValue: "Austin, Texas",
       },
     },
     navLinks: [
-      { label: "About", href: "#about" },
-      { label: "Programs", href: "#pricing" },
-      { label: "Testimonials", href: "#testimonials" },
-      { label: "Pricing", href: "#pricing" },
+      { label: "ABOUT", href: "#about" },
+      { label: "PROGRAMS", href: "#pricing" },
+      { label: "TESTIMONIALS", href: "#testimonials" },
+      { label: "PRICING", href: "#pricing" },
     ] satisfies NavLink[],
     pricingPlans: [
       {
@@ -513,7 +513,7 @@ export const localizedContent = {
     testimonials: [
       {
         quote:
-          "Steve rebuilt my confidence in the gym. I dropped 18 pounds and gained visible strength in less than four months.",
+          "Ashur rebuilt my confidence in the gym. I dropped 18 pounds and gained visible strength in less than four months.",
         name: "Maya L.",
         avatar: "M",
       },
@@ -525,7 +525,7 @@ export const localizedContent = {
       },
       {
         quote:
-          "I travel for work and still made progress because Steve adapted my program every week around my schedule.",
+          "I travel for work and still made progress because Ashur adapted my program every week around my schedule.",
         name: "Avery K.",
         avatar: "A",
       },
@@ -534,7 +534,7 @@ export const localizedContent = {
       {
         question: "How often should I train each week?",
         answer:
-          "Most clients start with three to four sessions weekly. Steve adjusts volume based on your schedule, recovery, and goals.",
+          "Most clients start with three to four sessions weekly. Ashur adjusts volume based on your schedule, recovery, and goals.",
       },
       {
         question: "Do I need gym access to join?",

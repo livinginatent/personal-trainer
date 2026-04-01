@@ -10,6 +10,9 @@ interface HeroSectionProps {
 
 export function HeroSection({ content }: HeroSectionProps) {
   const { heroStats, siteContent } = content;
+  const headlineSentences =
+    siteContent.hero.headline.match(/[^.!?]+[.!?]?/g)?.map((sentence) => sentence.trim()) ??
+    [siteContent.hero.headline];
 
   return (
     <section
@@ -19,7 +22,14 @@ export function HeroSection({ content }: HeroSectionProps) {
       <div className="mx-auto grid min-h-screen w-full max-w-7xl items-center gap-12 lg:grid-cols-2">
         <div>
           <h1 className="font-display text-6xl uppercase leading-none text-white sm:text-7xl lg:text-8xl">
-            {siteContent.hero.headline}
+            {headlineSentences.map((sentence, index) => (
+              <span
+                key={`${sentence}-${index}`}
+                className={index === 0 ? "block" : "mt-2 block"}
+              >
+                {sentence}
+              </span>
+            ))}
           </h1>
           <p className="mt-6 max-w-xl font-body text-lg">{siteContent.hero.subtext}</p>
           <Link
