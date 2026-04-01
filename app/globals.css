@@ -9,3 +9,9 @@ html {
 body {
   @apply bg-brand-black font-body text-white;
 }
+
+/* Prevent accidental horizontal scrolling from absolutely positioned decorative elements. */
+html,
+body {
+  overflow-x: hidden;
+}

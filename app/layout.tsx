@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   title: "JULIEFIT | Steve Smith Personal Trainer",
   description:
     "JULIEFIT by Steve Smith. Personal training programs, client results, and coaching plans built for real progress.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
 };
 
 export default function RootLayout({

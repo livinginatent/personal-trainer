@@ -23,7 +23,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 mx-auto w-full max-w-7xl px-4">
+    <header className="fixed left-1/2 top-4 z-50 w-full max-w-7xl -translate-x-1/2 px-4">
       <nav
         className={cn(
           "mx-auto flex w-full items-center justify-between rounded-full border border-brand-red px-5 py-3 text-white transition-colors",
