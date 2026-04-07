@@ -36,7 +36,7 @@ export default function LocalePage({ params }: LocalePageProps) {
         <FaqSection content={content} />
         <CtaBanner content={content} />
       </main>
-      <Footer content={content} />
+      <Footer content={content} locale={locale} />
     </>
   );
 }

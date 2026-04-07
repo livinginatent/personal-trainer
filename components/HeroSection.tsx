@@ -44,7 +44,7 @@ export function HeroSection({ content }: HeroSectionProps) {
         <div className="relative mx-auto w-full max-w-md">
           <Starburst className="absolute -left-10 top-14 h-36 w-36 text-brand-black" />
           <Image
-            src={siteContent.hero.imageSrc}
+            src={'/HERO-1.jpeg'}
             alt={siteContent.hero.imageAlt}
             width={400}
             height={600}

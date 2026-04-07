@@ -1,17 +1,26 @@
 import Link from "next/link";
 import type { LocaleContent } from "@/lib/data";
+import type { Locale } from "@/lib/i18n";
 
 interface FooterProps {
   content: LocaleContent;
+  locale: Locale;
 }
 
-export function Footer({ content }: FooterProps) {
+function resolveFooterHref(locale: Locale, href: string): string {
+  if (href.startsWith("http://") || href.startsWith("https://")) return href;
+  if (href.startsWith("#")) return `/${locale}${href}`;
+  return href;
+}
+
+export function Footer({ content, locale }: FooterProps) {
   const { footerLinks, footerSocialLinks, siteContent } = content;
+  const phoneHref = `tel:${siteContent.footer.phoneValue.replace(/[^\d+]/g, "")}`;
 
   return (
     <footer className="bg-brand-black px-4 pb-8 pt-16 text-white">
       <div className="mx-auto w-full max-w-7xl">
-        <p className="font-display text-7xl uppercase leading-none text-white sm:text-8xl">
+        <p className="font-display text-6xl uppercase leading-none text-white sm:text-8xl">
           {siteContent.brand.name}
         </p>
 
@@ -22,9 +31,9 @@ export function Footer({ content }: FooterProps) {
             </h3>
             <ul className="mt-4 space-y-2">
               {footerLinks.map((link) => (
-                <li key={link.href}>
+                <li key={`${link.label}-${link.href}`}>
                   <Link
-                    href={link.href}
+                    href={resolveFooterHref(locale, link.href)}
                     className="font-body text-sm uppercase tracking-wide text-white"
                   >
                     {link.label}
@@ -40,8 +49,26 @@ export function Footer({ content }: FooterProps) {
             </h3>
             <ul className="mt-4 space-y-2 font-body text-sm">
               <li>{`${siteContent.footer.emailLabel}: ${siteContent.footer.emailValue}`}</li>
-              <li>{`${siteContent.footer.phoneLabel}: ${siteContent.footer.phoneValue}`}</li>
-              <li>{`${siteContent.footer.locationLabel}: ${siteContent.footer.locationValue}`}</li>
+              <li>
+                {`${siteContent.footer.phoneLabel}: `}
+                <a
+                  href={phoneHref}
+                  className="underline decoration-brand-red underline-offset-2 transition-colors hover:text-brand-red"
+                >
+                  {siteContent.footer.phoneValue}
+                </a>
+              </li>
+              <li>
+                {`${siteContent.footer.locationLabel}: `}
+                <Link
+                  href={siteContent.footer.locationHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-brand-red underline-offset-2 transition-colors hover:text-brand-red"
+                >
+                  {siteContent.footer.locationValue}
+                </Link>
+              </li>
             </ul>
           </div>
 

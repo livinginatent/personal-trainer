@@ -17,7 +17,7 @@ export function AboutSection({ content }: AboutSectionProps) {
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-2">
         <div className="relative mx-auto w-full max-w-md">
           <Image
-            src={siteContent.about.imageSrc}
+            src={'/hero-2.jpeg'}
             alt={siteContent.about.imageAlt}
             width={560}
             height={560}

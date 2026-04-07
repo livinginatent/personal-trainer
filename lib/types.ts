@@ -36,3 +36,81 @@ export interface FooterSocialLink extends FooterLink {
   iconPath: string;
   viewBox: string;
 }
+
+export interface BmiCategoryCopy {
+  label: string;
+  rangeLabel: string;
+}
+
+export interface BmiPageContent {
+  metadata: {
+    title: string;
+    description: string;
+  };
+  pageTitle: string;
+  pageSubtitle: string;
+  intro: string;
+  heightLabel: string;
+  weightLabel: string;
+  optionalHint: string;
+  calculateLabel: string;
+  clearLabel: string;
+  resultTitle: string;
+  resultEmpty: string;
+  bmiAbbrev: string;
+  yourCategoryLabel: string;
+  categories: {
+    underweight: BmiCategoryCopy;
+    normal: BmiCategoryCopy;
+    overweight: BmiCategoryCopy;
+    obese: BmiCategoryCopy;
+  };
+  disclaimer: string;
+  backHomeLabel: string;
+  gaugeCaption: string;
+  validation: {
+    heightRange: string;
+    weightRange: string;
+    enterBoth: string;
+  };
+}
+
+export type ProteinLevelId =
+  | "sedentary"
+  | "light"
+  | "moderate"
+  | "active"
+  | "athlete";
+
+export interface ProteinLevelCopy {
+  label: string;
+  description: string;
+}
+
+export interface ProteinPageContent {
+  metadata: {
+    title: string;
+    description: string;
+  };
+  pageTitle: string;
+  pageSubtitle: string;
+  intro: string;
+  weightLabel: string;
+  activityLabel: string;
+  activityHint: string;
+  optionalHint: string;
+  calculateLabel: string;
+  clearLabel: string;
+  resultTitle: string;
+  resultEmpty: string;
+  dailyTargetLabel: string;
+  perKgCaption: string;
+  perMealTitle: string;
+  perMealMealsNote: string;
+  disclaimer: string;
+  backHomeLabel: string;
+  levels: Record<ProteinLevelId, ProteinLevelCopy>;
+  validation: {
+    weightRange: string;
+  };
+}

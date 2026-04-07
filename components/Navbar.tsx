@@ -1,10 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { LocaleContent } from "@/lib/data";
 import { locales, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+
+function resolveNavHref(locale: Locale, href: string): string {
+  if (href.startsWith("http://") || href.startsWith("https://")) return href;
+  if (href.startsWith("/")) return href;
+  if (href.startsWith("#")) return `/${locale}${href}`;
+  return `/${locale}/${href}`;
+}
+
+function pathForLocale(pathname: string | null, newLocale: Locale): string {
+  if (!pathname) return `/${newLocale}`;
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments.length === 0) return `/${newLocale}`;
+  segments[0] = newLocale;
+  return `/${segments.join("/")}`;
+}
 
 interface NavbarProps {
   content: LocaleContent;
@@ -12,6 +28,7 @@ interface NavbarProps {
 }
 
 export function Navbar({ content, locale }: NavbarProps) {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { navLinks, siteContent } = content;
@@ -38,15 +55,15 @@ export function Navbar({ content, locale }: NavbarProps) {
         )}
         aria-label={`${siteContent.brand.name} ${siteContent.navbar.navAriaLabel}`}
       >
-        <Link href="#home" className="font-display text-2xl tracking-wider">
+        <Link href={`/${locale}`} className="font-display text-2xl tracking-wider">
           {siteContent.brand.name}
         </Link>
 
         <ul className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={`${link.label}-${link.href}`}>
               <Link
-                href={link.href}
+                href={resolveNavHref(locale, link.href)}
                 className="font-body text-sm tracking-wide transition-colors hover:text-brand-red"
               >
                 {link.label}
@@ -56,7 +73,7 @@ export function Navbar({ content, locale }: NavbarProps) {
         </ul>
 
         <Link
-          href={siteContent.navbar.contactHref}
+          href={resolveNavHref(locale, siteContent.navbar.contactHref)}
           className="hidden rounded-full border border-white px-5 py-2 font-body text-xs font-semibold uppercase tracking-wider md:inline-flex"
           aria-label={siteContent.navbar.contactLabel}
         >
@@ -70,7 +87,7 @@ export function Navbar({ content, locale }: NavbarProps) {
           {locales.map((language) => (
             <Link
               key={language}
-              href={`/${language}`}
+              href={pathForLocale(pathname, language)}
               className={cn(
                 "rounded-full border px-3 py-1 font-body text-xs font-semibold uppercase tracking-wider",
                 language === locale
@@ -103,9 +120,9 @@ export function Navbar({ content, locale }: NavbarProps) {
         <div className="mt-2 rounded-3xl border border-brand-red bg-brand-black p-4 md:hidden">
           <ul className="space-y-3">
             {navLinks.map((link) => (
-              <li key={link.href}>
+              <li key={`${link.label}-${link.href}`}>
                 <Link
-                  href={link.href}
+                  href={resolveNavHref(locale, link.href)}
                   onClick={() => setIsMenuOpen(false)}
                   className="block font-body text-sm tracking-wide text-white"
                 >
@@ -115,7 +132,7 @@ export function Navbar({ content, locale }: NavbarProps) {
             ))}
             <li>
               <Link
-                href={siteContent.navbar.contactHref}
+                href={resolveNavHref(locale, siteContent.navbar.contactHref)}
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-2 inline-flex rounded-full border border-white px-5 py-2 font-body text-xs font-semibold uppercase tracking-wider text-white"
               >
@@ -130,7 +147,7 @@ export function Navbar({ content, locale }: NavbarProps) {
                 {locales.map((language) => (
                   <Link
                     key={language}
-                    href={`/${language}`}
+                    href={pathForLocale(pathname, language)}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
                       "rounded-full border px-3 py-1 font-body text-xs font-semibold uppercase tracking-wider",

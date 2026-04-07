@@ -15,7 +15,7 @@ export function StatBadge({ value, label, className }: StatBadgeProps) {
       )}
     >
       <p className="font-display text-2xl leading-none">{value}</p>
-      <p className="font-body text-xs uppercase tracking-wide">{label}</p>
+      <p className="font-body text-xs  tracking-wide">{label}</p>
     </div>
   );
 }
