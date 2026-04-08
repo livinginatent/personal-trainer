@@ -114,3 +114,83 @@ export interface ProteinPageContent {
     weightRange: string;
   };
 }
+
+export type MacroPresetId =
+  | "balanced"
+  | "highProtein"
+  | "performance"
+  | "lowerCarb"
+  | "custom";
+
+export interface MacroPresetCopy {
+  label: string;
+  description: string;
+}
+
+export interface MacroPageContent {
+  metadata: {
+    title: string;
+    description: string;
+  };
+  pageTitle: string;
+  pageSubtitle: string;
+  intro: string;
+  caloriesLabel: string;
+  caloriesHint: string;
+  splitLabel: string;
+  splitHint: string;
+  optionalHint: string;
+  calculateLabel: string;
+  clearLabel: string;
+  customSplitLabel: string;
+  proteinPercentLabel: string;
+  carbsPercentLabel: string;
+  fatPercentLabel: string;
+  percentSumError: string;
+  percentHint: string;
+  resultTitle: string;
+  resultEmpty: string;
+  totalCaloriesLabel: string;
+  energyNote: string;
+  roundedMacrosEnergy: string;
+  proteinG: string;
+  carbsG: string;
+  fatG: string;
+  macroBreakdownLabel: string;
+  splitShortLabels: {
+    protein: string;
+    carbs: string;
+    fat: string;
+  };
+  disclaimer: string;
+  backHomeLabel: string;
+  presets: {
+    balanced: MacroPresetCopy;
+    highProtein: MacroPresetCopy;
+    performance: MacroPresetCopy;
+    lowerCarb: MacroPresetCopy;
+    custom: MacroPresetCopy;
+  };
+  validation: {
+    caloriesRange: string;
+    percentInvalid: string;
+  };
+}
+
+export interface PrivacySection {
+  heading: string;
+  paragraphs: string[];
+}
+
+export interface PrivacyPageContent {
+  metadata: {
+    title: string;
+    description: string;
+  };
+  pageTitle: string;
+  lastUpdatedLabel: string;
+  lastUpdated: string;
+  intro: string;
+  sections: PrivacySection[];
+  backHomeLabel: string;
+}

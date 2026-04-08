@@ -10,7 +10,8 @@ interface FooterProps {
 function resolveFooterHref(locale: Locale, href: string): string {
   if (href.startsWith("http://") || href.startsWith("https://")) return href;
   if (href.startsWith("#")) return `/${locale}${href}`;
-  return href;
+  if (href.startsWith("/")) return href;
+  return `/${locale}/${href}`;
 }
 
 export function Footer({ content, locale }: FooterProps) {
@@ -104,7 +105,7 @@ export function Footer({ content, locale }: FooterProps) {
 
         <div className="flex flex-col justify-between gap-3 font-body text-xs uppercase tracking-wide text-white sm:flex-row">
           <p>{`${siteContent.symbols.copyright} ${new Date().getFullYear()} ${siteContent.brand.name}. ${siteContent.brand.footerRights}`}</p>
-          <Link href={siteContent.brand.privacyHref}>
+          <Link href={resolveFooterHref(locale, siteContent.brand.privacyHref)}>
             {siteContent.brand.privacyLabel}
           </Link>
         </div>

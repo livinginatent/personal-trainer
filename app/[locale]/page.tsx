@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
 import { PricingSection } from "@/components/PricingSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { ToolsSection } from "@/components/ToolsSection";
 import { getLocaleContent } from "@/lib/data";
 import { isLocale } from "@/lib/i18n";
 
@@ -31,6 +32,7 @@ export default function LocalePage({ params }: LocalePageProps) {
       <main>
         <HeroSection content={content} />
         <AboutSection content={content} />
+        <ToolsSection content={content} locale={locale} />
         <PricingSection content={content} />
         <TestimonialsSection content={content} />
         <FaqSection content={content} />

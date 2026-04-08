@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   title: "ASHURXFIT.AZ",
   description:
     "ASHURXFIT.AZ personal training platform.",
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export const viewport: Viewport = {

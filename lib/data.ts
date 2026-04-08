@@ -4,8 +4,10 @@ import type {
   FooterLink,
   FooterSocialLink,
   HeroStat,
+  MacroPageContent,
   NavLink,
   PricingPlan,
+  PrivacyPageContent,
   ProteinPageContent,
   Testimonial,
 } from "@/lib/types";
@@ -19,7 +21,7 @@ const footerSocialLinks: FooterSocialLink[] = [
     iconPath:
       "M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z",
   },
-  {
+  /* {
     label: "YouTube",
     href: "#",
     viewBox: "0 0 24 24",
@@ -32,7 +34,7 @@ const footerSocialLinks: FooterSocialLink[] = [
     viewBox: "0 0 24 24",
     iconPath:
       "M4.9 3.5a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8zM3 9.5h3.8V21H3V9.5zm6.3 0h3.7v1.6h.1c.5-1 1.8-2 3.8-2 4.1 0 4.9 2.7 4.9 6.2V21H18v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21H9.3V9.5z",
-  },
+  }, */
 ];
 
 const sharedSymbols = {
@@ -55,7 +57,7 @@ export const localizedContent = {
         trainerName: "Ashur",
         footerRights: "Bütün hüquqlar qorunur.",
         privacyLabel: "Məxfilik Siyasəti",
-        privacyHref: "/privacy",
+        privacyHref: "privacy",
       },
       metadata: {
         title: "ASHURXFIT.AZ | Ashur Şəxsi Məşqçi",
@@ -114,6 +116,28 @@ export const localizedContent = {
         ctaLabel: "BAŞLAYAQ",
         ctaHref: "#home",
       },
+      tools: {
+        sectionId: "tools",
+        title: "ALƏTLƏR",
+        subtitle:
+          "BMI, gündəlik protein və makro bölgüsünü sürətli yoxlamaq üçün üç kalkulyator.",
+        openLabel: "Aç",
+        bmi: {
+          title: "BMI kalkulyatoru",
+          description:
+            "Boy və çəki ilə bədən kütlə indeksinizi təxmini hesablayın.",
+        },
+        protein: {
+          title: "Protein kalkulyatoru",
+          description:
+            "Məşq səviyyənizə uyğun təxmini günlük protein diapazonu.",
+        },
+        macro: {
+          title: "Makro kalkulyatoru",
+          description:
+            "Kaloriya hədəfinizdən zülal, karbohidrat və yağı qramla bölüşdürün.",
+        },
+      },
       footer: {
         linksTitle: "Keçidlər",
         contactTitle: "Əlaqə",
@@ -134,6 +158,7 @@ export const localizedContent = {
       { label: "Rəylər", href: "#testimonials" },
       { label: "BMI", href: "bmi" },
       { label: "Protein", href: "protein" },
+      { label: "Makro", href: "macro" },
     ] satisfies NavLink[],
     bmiPage: {
       metadata: {
@@ -236,6 +261,150 @@ export const localizedContent = {
         weightRange: "Çəki adətən 30–250 kq arasında olur.",
       },
     } satisfies ProteinPageContent,
+    macroPage: {
+      metadata: {
+        title: "ASHURXFIT.AZ | Makro kalkulyatoru",
+        description:
+          "Gündəlik kaloriya hədəfi və zülal / karbohidrat / yağ faizləri ilə makroları qramla hesablayın. Ümumi bələdçidir.",
+      },
+      pageTitle: "Makro kalkulyatoru",
+      pageSubtitle:
+        "Kaloriya məqsədi və əlverişli bölgü şablonu ilə makroları planlaşdırın.",
+      intro:
+        "Zülal və karbohidratlar təxminən 4 kkal/q, yağlar isə 9 kkal/q verir. Nəticələr yuvarlaqlaşdırılmış qramlardır; real qida seçimləriniz və həzm fərqləri ümumi balansı bir az dəyişə bilər.",
+      caloriesLabel: "Gündəlik kaloriya hədəfi",
+      caloriesHint: "Məsələn, kouç və ya dietoloq ilə razılaşdığınız məqsəd.",
+      splitLabel: "Kaloriya bölgüsü",
+      splitHint: "Hazır şablon seçin və ya «Fərdi» ilə faizləri özünüz yazın.",
+      optionalHint:
+        "Kaloriya və bölgü dəyişdikcə qramlar avtomatik yenilənir.",
+      calculateLabel: "Hesabla",
+      clearLabel: "Təmizlə",
+      customSplitLabel: "Fərdi faizlər (P / KV / Y)",
+      proteinPercentLabel: "Zülal %",
+      carbsPercentLabel: "Karbohidrat %",
+      fatPercentLabel: "Yağ %",
+      percentSumError: "Üç faizin cəmi 100 olmalıdır (təxminən ±0.5 qəbul olunur).",
+      percentHint: "Nümunə: 30 / 40 / 30",
+      resultTitle: "Gündəlik makrolar (təxmini)",
+      resultEmpty: "Keçərli kaloriya və bölgü daxil et — makrolar burada görünəcək.",
+      totalCaloriesLabel: "Kaloriya hədəfi",
+      energyNote:
+        "Hesablama: 4 kkal/q zülal və karbohidrat, 9 kkal/q yağ (ümumi tibb tədrisi).",
+      roundedMacrosEnergy: "Yuvarlaqlaşdırılmış qramlar təxminən {n} kkal edir.",
+      proteinG: "Zülal",
+      carbsG: "Karbohidrat",
+      fatG: "Yağ",
+      macroBreakdownLabel: "Qram təqdimatı",
+      splitShortLabels: {
+        protein: "Z",
+        carbs: "KV",
+        fat: "Y",
+      },
+      disclaimer:
+        "Bu alət təhsil üçündür; tibbi və ya fərdi qidalanma terapiyası deyil. Xəstəlik, dərman və ya xüsusi dietlər üçün mütəxəssisə müraciət edin.",
+      backHomeLabel: "Ana səhifəyə qayıt",
+      presets: {
+        balanced: {
+          label: "Balanslı",
+          description: "30% zülal · 40% KV · 30% yağ — geniş istifadə olunan başlanğıc.",
+        },
+        highProtein: {
+          label: "Daha çox zülal",
+          description: "35% zülal · 35% KV · 30% yağ — güc və bərpa üçün tez-tez seçilir.",
+        },
+        performance: {
+          label: "Yüksək karbohidrat",
+          description: "25% zülal · 45% KV · 30% yağ — daha çox enerji tərəfdarları üçün.",
+        },
+        lowerCarb: {
+          label: "Aşağı karbohid",
+          description: "35% zülal · 25% KV · 40% yağ — daha az KV, daha çox yağ.",
+        },
+        custom: {
+          label: "Fərdi",
+          description: "Faizləri aşağıda özünüz təyin edin (cəm 100%).",
+        },
+      },
+      validation: {
+        caloriesRange: "Adətən 1000–6000 kkal arası realistik hədəflər üçün istifadə olunur.",
+        percentInvalid: "Faizlər üçün 0–100 arası ədəd daxil edin.",
+      },
+    } satisfies MacroPageContent,
+    privacyPage: {
+      metadata: {
+        title: "ASHURXFIT.AZ | Məxfilik siyasəti",
+        description:
+          "ashurxfit.az saytında şəxsi məlumatların toplanması, istifadəsi və hüquqlarınız haqqında məlumat.",
+      },
+      pageTitle: "Məxfilik siyasəti",
+      lastUpdatedLabel: "Son yenilənmə",
+      lastUpdated: "7 aprel 2026",
+      intro:
+        "Bu Məxfilik Siyasəti ASHURXFIT.AZ veb saytı (bundan sonra «Sayt») istifadə etdikdə şəxsi məlumatlarınızın necə emal oluna biləcəyini izah edir. Sayt fərdi məşq və kouçinq xidmətləri haqqında məlumat təqdim edir; xidmətlərə qoşulduğunuzda əlavə razılaşmalar tətbiq oluna bilər.",
+      sections: [
+        {
+          heading: "1. Məsuliyyətli şəxs",
+          paragraphs: [
+            "Saytın operatoru və bu siyasət üzrə əlaqə nöqtəsi: ASHURXFIT.AZ / Ashur Abdullayev fərdi məşqçilik fəaliyyəti çərçivəsində. Ünvan və əlaqə üçün səhifənin altbilgisində göstərilmiş e-poçt və telefondan istifadə edə bilərsiniz.",
+          ],
+        },
+        {
+          heading: "2. Hansı məlumatları toplaya bilərik",
+          paragraphs: [
+            "Əlaqə vasitələrindən bizə yazdığınız və ya zəng etdiyiniz zaman ötürdüyünüz məlumatlar (məsələn, ad, e-poçt, telefon nömrəsi, mesaj məzmunu və digər könüllü paylaşdıqlarınız).",
+            "Texniki və məhdud log məlumatları: məsələn, brauzer növü, ümumi cihaz təsviri, səhifəyə daxilolma vaxtı kimi məlumatlar hosting və ya təhlükəsizlik provayderi tərəfindən avtomatik qeydə alına bilər.",
+            "Hazırda veb sayt üzərində hesab yaradılması və ya ödəniş forması tələb etmir: kalkulyatorlar brauzerinizdə daxil etdiyiniz rəqəmləri adətən serverə saxlanılmadan hesablayır.",
+          ],
+        },
+        {
+          heading: "3. Məlumatdan istifadə məqsədləri",
+          paragraphs: [
+            "Sorğularınıza və əlaqə müraciətlərinizə cavab vermək, məşq və ya kouçinq xidmətləri barədə məlumat ötürmək, hüquqi öhdəlikləri yerinə yetirmək və Saytın təhlükəsiz işləməsini təmin etmək.",
+            "Marketinq mesajları yalnız ayrıca razılığınız olduqda və həmin razılığın şərtlərinə uyğun göndərilə bilər; hazırda avtomatik bülleten sistemimiz göstərilməyibsə, belə bir məcburiyyət yoxdur.",
+          ],
+        },
+        {
+          heading: "4. Hüquqi əsas və saxlama",
+          paragraphs: [
+            "Emal könüllü əlaqə və ya müqəvilə öncəsi addımlar, eləcə də qanuni maraq (saytın təhlükəsizliyi) əsasında həyata keçirilə bilər.",
+            "Əlaqə mesajları adətən sorğunun məzmununa və hüquqi tələblərə uyğun müddət ərzində saxlanılır; artıq ehtiyac olmayanda silinir və ya anonimləşdirilir.",
+          ],
+        },
+        {
+          heading: "5. Üçüncü tərəflər və ötürmələr",
+          paragraphs: [
+            "Saytın yerləşdirildiyi hosting, e-poçt göndərici və ya analitika alətləri (tətbiq olunarsa) məhdud texniki məlumat görə bilər. Belə provayderlər müqavilə əsasında öhdəliklərə riayət etməlidirlər.",
+            "Ötürmə beynəlxalq serverlər vasitəsilə ola bilər; bu halda müvafiq qoruma tədbirləri və ya standart müqavilələr tətbiq edilə bilər.",
+          ],
+        },
+        {
+          heading: "6. Kukilər",
+          paragraphs: [
+            "Sayt əsasən zəruri texniki kukilərdən istifadə edə bilər (məsələn, dil seçimi). Analitik və ya reklam kukiləri əlavə edilərsə, bu səhifə və ya kukilər bildirişi yenilənəcək və sizə seçim təqdim olunacaq.",
+          ],
+        },
+        {
+          heading: "7. Sizin hüquqlarınız",
+          paragraphs: [
+            "Mövcud qanunvericiliyin icazə verdiyi hədddə məlumatlarınıza çıxış, düzəliş, silinmə, emalın məhdudlaşdırılması və ya etiraz hüquqlarınız ola bilər. Sorğular üçün coach@ashurxfit.az ünvanına yazın.",
+          ],
+        },
+        {
+          heading: "8. Uşaqlar",
+          paragraphs: [
+            "Sayt 16 yaşdan aşağı uşaqlardan qəsdən şəxsi məlumat toplamır. Valideynlər belə bir hal barədə bizimlə əlaqə saxlaya bilər.",
+          ],
+        },
+        {
+          heading: "9. Dəyişikliklər",
+          paragraphs: [
+            "Bu siyasəti vaxtaşırı yeniləyə bilərik. Əhəmiyyətli dəyişikliklər halında Saytda bildiriş və ya yenilənmiş tarix göstərilə bilər. Versiyanın aktuallığı üçün «Son yenilənmə» tarixinə baxın.",
+          ],
+        },
+      ],
+      backHomeLabel: "Ana səhifəyə qayıt",
+    } satisfies PrivacyPageContent,
     pricingPlans: [
       {
         name: "Başlanğıc",
@@ -321,6 +490,9 @@ export const localizedContent = {
       { label: "Proqramlar", href: "#pricing" },
       { label: "Rəylər", href: "#testimonials" },
       { label: "FAQ", href: "#faq" },
+      { label: "BMI kalkulyatoru", href: "bmi" },
+      { label: "Protein kalkulyatoru", href: "protein" },
+      { label: "Makro kalkulyatoru", href: "macro" },
     ] satisfies FooterLink[],
     heroStats: [
       { value: "250+", label: "Məşq etdirdiyimiz müştəri" },
@@ -336,7 +508,7 @@ export const localizedContent = {
         trainerName: "Ashur",
         footerRights: "Все права защищены.",
         privacyLabel: "Политика конфиденциальности",
-        privacyHref: "/privacy",
+        privacyHref: "privacy",
       },
       metadata: {
         title: "ASHURXFIT.AZ | Персональный тренер Ashur",
@@ -395,6 +567,28 @@ export const localizedContent = {
         ctaLabel: "НАЧНЕМ",
         ctaHref: "#home",
       },
+      tools: {
+        sectionId: "tools",
+        title: "ИНСТРУМЕНТЫ",
+        subtitle:
+          "Три калькулятора: ИМТ, белок в день и разбиение макросов по калориям.",
+        openLabel: "Открыть",
+        bmi: {
+          title: "Калькулятор ИМТ",
+          description:
+            "Быстрая оценка индекса массы тела по росту и весу.",
+        },
+        protein: {
+          title: "Калькулятор белка",
+          description:
+            "Ориентировочная суточная норма белка от веса и нагрузки.",
+        },
+        macro: {
+          title: "Калькулятор макросов",
+          description:
+            "Граммы белков, углеводов и жиров из калорий и процентов.",
+        },
+      },
       footer: {
         linksTitle: "Ссылки",
         contactTitle: "Контакты",
@@ -414,6 +608,7 @@ export const localizedContent = {
       { label: "Отзывы", href: "#testimonials" },
       { label: "ИМТ", href: "bmi" },
       { label: "Белок", href: "protein" },
+      { label: "Макросы", href: "macro" },
       { label: "Цены", href: "#pricing" },
     ] satisfies NavLink[],
     bmiPage: {
@@ -517,6 +712,150 @@ export const localizedContent = {
         weightRange: "Обычно вес в диапазоне 30–250 кг.",
       },
     } satisfies ProteinPageContent,
+    macroPage: {
+      metadata: {
+        title: "ASHURXFIT.AZ | Калькулятор макросов",
+        description:
+          "Рассчитай граммы белков, углеводов и жиров из суточных калорий и процентов. Для ориентира, не вместо диетолога.",
+      },
+      pageTitle: "Калькулятор макросов",
+      pageSubtitle:
+        "Задай калории и шаблон разбивки — получи граммы БЖУ на день.",
+      intro:
+        "Белок и углеводы дают около 4 ккал/г, жир — около 9 ккал/г. Цифры округляются; реальные продукты и переваривание слегка сдвигают баланс.",
+      caloriesLabel: "Суточная цель по калориям",
+      caloriesHint: "Например, цель от тренера или калькулятора расхода.",
+      splitLabel: "Распределение калорий",
+      splitHint: "Выбери пресет или «Свой вариант» и введи проценты.",
+      optionalHint:
+        "Граммы обновляются при изменении калорий или раскладки.",
+      calculateLabel: "Рассчитать",
+      clearLabel: "Сбросить",
+      customSplitLabel: "Свои проценты (Б / У / Ж)",
+      proteinPercentLabel: "Белок %",
+      carbsPercentLabel: "Углеводы %",
+      fatPercentLabel: "Жиры %",
+      percentSumError: "Сумма трёх процентов должна быть 100 (допуск ±0.5).",
+      percentHint: "Пример: 30 / 40 / 30",
+      resultTitle: "Макросы на день (ориентир)",
+      resultEmpty: "Введи калории и корректную раскладку — здесь появятся граммы.",
+      totalCaloriesLabel: "Цель по калориям",
+      energyNote:
+        "Расчёт: 4 ккал/г белка и углеводов, 9 ккал/г жира (учебная модель).",
+      roundedMacrosEnergy: "Округлённые граммы дают около {n} ккал.",
+      proteinG: "Белок",
+      carbsG: "Углеводы",
+      fatG: "Жиры",
+      macroBreakdownLabel: "В граммах",
+      splitShortLabels: {
+        protein: "Б",
+        carbs: "У",
+        fat: "Ж",
+      },
+      disclaimer:
+        "Информационный инструмент, не медицинская диета. Беременность, болезни почек и индивидуальные ограничения требуют очной консультации.",
+      backHomeLabel: "На главную",
+      presets: {
+        balanced: {
+          label: "Сбалансированно",
+          description: "30% Б · 40% У · 30% Ж — частый стартовый вариант.",
+        },
+        highProtein: {
+          label: "Больше белка",
+          description: "35% Б · 35% У · 30% Ж — силовые и восстановление.",
+        },
+        performance: {
+          label: "Больше углеводов",
+          description: "25% Б · 45% У · 30% Ж — упор на энергию для нагрузки.",
+        },
+        lowerCarb: {
+          label: "Меньше углеводов",
+          description: "35% Б · 25% У · 40% Ж — ниже У, выше жир.",
+        },
+        custom: {
+          label: "Свой вариант",
+          description: "Введи проценты ниже (в сумме 100%).",
+        },
+      },
+      validation: {
+        caloriesRange: "Обычно используют цели от 1000 до 6000 ккал.",
+        percentInvalid: "Вводи числа от 0 до 100 для каждого процента.",
+      },
+    } satisfies MacroPageContent,
+    privacyPage: {
+      metadata: {
+        title: "ASHURXFIT.AZ | Политика конфиденциальности",
+        description:
+          "Как обрабатываются персональные данные на сайте ashurxfit.az и какие у вас есть права.",
+      },
+      pageTitle: "Политика конфиденциальности",
+      lastUpdatedLabel: "Последнее обновление",
+      lastUpdated: "7 апреля 2026 г.",
+      intro:
+        "Настоящая Политика конфиденциальности описывает, как при использовании сайта ASHURXFIT.AZ (далее — «Сайт») могут обрабатываться персональные данные. Сайт информирует о персональном тренинге и коучинге; при заключении договора могут действовать отдельные условия.",
+      sections: [
+        {
+          heading: "1. Кто отвечает за обработку",
+          paragraphs: [
+            "Оператор и контакт по вопросам данной политики: деятельность персонального тренера Ashur Abdullayev в рамках бренда ASHURXFIT.AZ. Адрес и контакты указаны в подвале сайта (email и телефон).",
+          ],
+        },
+        {
+          heading: "2. Какие данные мы можем собирать",
+          paragraphs: [
+            "Данные, которые вы добровольно передаёте при обращении (имя, email, телефон, текст сообщения и т.п.).",
+            "Технические и ограниченные журнальные данные (тип браузера, обобщённое описание устройства, время обращения) — могут фиксироваться хостингом или средствами безопасности.",
+            "На сайте не требуется создавать учётную запись для калькуляторов: введённые значения обычно обрабатываются в браузере и не сохраняются нами для этих инструментов.",
+          ],
+        },
+        {
+          heading: "3. Цели использования",
+          paragraphs: [
+            "Ответ на запросы, организация связи по тренировкам и коучингу, выполнение обязанностей по закону, обеспечение безопасности и работоспособности Сайта.",
+            "Маркетинговые сообщения — только при отдельном согласии и в рамках выбранных вами настроек; если отдельной рассылки нет, обязательств по ней не возникает.",
+          ],
+        },
+        {
+          heading: "4. Правовые основания и срок хранения",
+          paragraphs: [
+            "Обработка может опираться на ваше согласие, подготовку к договору или законный интерес (безопасность Сайта).",
+            "Корреспонденция хранится столько, сколько нужно по содержанию запроса и требованиям закона, затем удаляется или обезличивается.",
+          ],
+        },
+        {
+          heading: "5. Третьи стороны и трансграничная передача",
+          paragraphs: [
+            "Хостинг-провайдер, почтовые сервисы и, при подключении, аналитика могут получать ограниченные технические данные. С ними обычно заключаются договоры с обязательствами по конфиденциальности.",
+            "Данные могут обрабатываться на серверах за пределами вашей страны; при необходимости применяются стандартные меры защиты.",
+          ],
+        },
+        {
+          heading: "6. Файлы cookie",
+          paragraphs: [
+            "Мы можем использовать необходимые технические cookie (например, выбор языка). Если будут добавлены аналитика или реклама, политика и баннер cookie будут обновлены.",
+          ],
+        },
+        {
+          heading: "7. Ваши права",
+          paragraphs: [
+            "В пределах применимого права вы можете запросить доступ, исправление, удаление, ограничение обработки или возражение. Напишите на coach@ashurxfit.az.",
+          ],
+        },
+        {
+          heading: "8. Дети",
+          paragraphs: [
+            "Мы намеренно не собираем данные детей младше 16 лет. Родители могут связаться с нами, если считают, что ребёнок передал персональные данные.",
+          ],
+        },
+        {
+          heading: "9. Изменения",
+          paragraphs: [
+            "Мы можем обновлять эту политику; существенные изменения будут отражены на Сайте с указанием даты. Ориентируйтесь на поле «Последнее обновление».",
+          ],
+        },
+      ],
+      backHomeLabel: "На главную",
+    } satisfies PrivacyPageContent,
     pricingPlans: [
       {
         name: "Старт",
@@ -602,6 +941,9 @@ export const localizedContent = {
       { label: "Программы", href: "#pricing" },
       { label: "Отзывы", href: "#testimonials" },
       { label: "FAQ", href: "#faq" },
+      { label: "Калькулятор ИМТ", href: "bmi" },
+      { label: "Калькулятор белка", href: "protein" },
+      { label: "Калькулятор макросов", href: "macro" },
     ] satisfies FooterLink[],
     heroStats: [
       { value: "250+", label: "Клиентов с коучингом" },
@@ -617,7 +959,7 @@ export const localizedContent = {
         trainerName: "Ashur",
         footerRights: "ALL RIGHTS RESERVED.",
         privacyLabel: "PRIVACY POLICY",
-        privacyHref: "/privacy",
+        privacyHref: "privacy",
       },
       metadata: {
         title: "ASHURXFIT.AZ | Ashur Personal Trainer",
@@ -676,6 +1018,25 @@ export const localizedContent = {
         ctaLabel: "LET'S BEGIN",
         ctaHref: "#home",
       },
+      tools: {
+        sectionId: "tools",
+        title: "TOOLS",
+        subtitle:
+          "Three quick calculators: BMI, daily protein, and macro grams from calories.",
+        openLabel: "Open",
+        bmi: {
+          title: "BMI calculator",
+          description: "Estimate body mass index from height and weight.",
+        },
+        protein: {
+          title: "ProteIn calculator",
+          description: "A daily protein band from weight and training level.",
+        },
+        macro: {
+          title: "Macro calculator",
+          description: "Turn calories and ratios into protein, carbs, and fat (g).",
+        },
+      },
       footer: {
         linksTitle: "LINKS",
         contactTitle: "CONTACT",
@@ -695,6 +1056,7 @@ export const localizedContent = {
       { label: "TESTIMONIALS", href: "#testimonials" },
       { label: "BMI", href: "bmi" },
       { label: "PROTEIN", href: "protein" },
+      { label: "MACROS", href: "macro" },
       { label: "PRICING", href: "#pricing" },
     ] satisfies NavLink[],
     bmiPage: {
@@ -798,6 +1160,149 @@ export const localizedContent = {
         weightRange: "Weight is usually between 30 and 250 kg.",
       },
     } satisfies ProteinPageContent,
+    macroPage: {
+      metadata: {
+        title: "ASHURXFIT.AZ | Macro calculator",
+        description:
+          "Split daily calories into protein, carbs, and fat in grams using preset or custom percentages. Educational only.",
+      },
+      pageTitle: "Macro calculator",
+      pageSubtitle:
+        "Set a calorie target and a macro split to see grams per day.",
+      intro:
+        "Protein and carbs provide about 4 kcal per gram; fat provides about 9. Numbers are rounded—real foods and digestion can nudge the total slightly.",
+      caloriesLabel: "DAILY CALORIE TARGET",
+      caloriesHint: "For example, a goal from your coach or expenditure estimate.",
+      splitLabel: "CALORIE SPLIT",
+      splitHint: "Pick a template or choose Custom to enter your own percentages.",
+      optionalHint: "Grams update as you change calories or the split.",
+      calculateLabel: "Calculate",
+      clearLabel: "Clear",
+      customSplitLabel: "Custom percentages (P / C / F)",
+      proteinPercentLabel: "Protein %",
+      carbsPercentLabel: "Carbs %",
+      fatPercentLabel: "Fat %",
+      percentSumError: "The three percentages should add up to 100 (±0.5 accepted).",
+      percentHint: "Example: 30 / 40 / 30",
+      resultTitle: "DAILY MACROS (APPROX.)",
+      resultEmpty: "Enter valid calories and a valid split—grams will show here.",
+      totalCaloriesLabel: "CALORIE TARGET",
+      energyNote:
+        "Math: 4 kcal/g protein & carbs, 9 kcal/g fat (standard teaching model).",
+      roundedMacrosEnergy: "Rounded grams work out to about {n} kcal.",
+      proteinG: "Protein",
+      carbsG: "Carbs",
+      fatG: "Fat",
+      macroBreakdownLabel: "Gram breakdown",
+      splitShortLabels: {
+        protein: "P",
+        carbs: "C",
+        fat: "F",
+      },
+      disclaimer:
+        "For general education only, not medical nutrition therapy. Pregnancy, kidney disease, or prescribed limits need a qualified clinician.",
+      backHomeLabel: "Back to home",
+      presets: {
+        balanced: {
+          label: "Balanced",
+          description: "30% P · 40% C · 30% F—a common starting template.",
+        },
+        highProtein: {
+          label: "HIGHER PROTEIN",
+          description: "35% P · 35% C · 30% F—popular for strength and recovery.",
+        },
+        performance: {
+          label: "HIGHER CARB",
+          description: "25% P · 45% C · 30% F—more fuel for hard training.",
+        },
+        lowerCarb: {
+          label: "Lower carb",
+          description: "35% P · 25% C · 40% F—fewer carbs, more fat.",
+        },
+        custom: {
+          label: "Custom",
+          description: "Enter percentages below (must sum to 100%).",
+        },
+      },
+      validation: {
+        caloriesRange: "Typical targets often fall between 1000 and 6000 kcal.",
+        percentInvalid: "Use numbers from 0 to 100 for each percentage.",
+      },
+    } satisfies MacroPageContent,
+    privacyPage: {
+      metadata: {
+        title: "ASHURXFIT.AZ | Privacy policy",
+        description:
+          "How ASHURXFIT.AZ handles personal data when you use the site, and the choices you have.",
+      },
+      pageTitle: "Privacy policy",
+      lastUpdatedLabel: "Last updated",
+      lastUpdated: "April 7, 2026",
+      intro:
+        "This Privacy Policy explains how personal data may be processed when you use the ASHURXFIT.AZ website (the “Site”). The Site provides information about personal training and coaching. If you sign up for services, separate terms may apply.",
+      sections: [
+        {
+          heading: "1. Who is responsible",
+          paragraphs: [
+            "The Site is operated in connection with personal training services by Ashur Abdullayev under the ASHURXFIT.AZ brand. Contact details are listed in the site footer (email and phone).",
+          ],
+        },
+        {
+          heading: "2. Data we may collect",
+          paragraphs: [
+            "Information you voluntarily provide when you contact us (such as name, email, phone number, and the content of your message).",
+            "Limited technical data (for example, browser type, general device information, timestamps) that may be logged by hosting or security infrastructure.",
+            "The on-site calculators do not require an account; values you type are generally processed in your browser and are not stored by us for those tools.",
+          ],
+        },
+        {
+          heading: "3. How we use data",
+          paragraphs: [
+            "To respond to enquiries, discuss coaching or training services, meet legal obligations, and keep the Site secure and functional.",
+            "Marketing communications would only be sent with separate consent and in line with that consent; nothing in this policy requires you to receive marketing.",
+          ],
+        },
+        {
+          heading: "4. Legal bases and retention",
+          paragraphs: [
+            "Processing may rely on your consent, steps prior to a contract, or legitimate interests (such as IT security), depending on the situation and applicable law.",
+            "Messages are kept only as long as needed for the purpose and any legal requirements, then deleted or anonymised.",
+          ],
+        },
+        {
+          heading: "5. Processors and transfers",
+          paragraphs: [
+            "Hosting, email delivery, and (if enabled) analytics vendors may process limited technical data under contract. We expect them to safeguard personal data appropriately.",
+            "Data may be processed in countries other than your own; where required, we rely on appropriate safeguards.",
+          ],
+        },
+        {
+          heading: "6. Cookies",
+          paragraphs: [
+            "We may use strictly necessary cookies (for example, language preference). If we add analytics or advertising cookies, we will update this policy and provide appropriate choices.",
+          ],
+        },
+        {
+          heading: "7. Your rights",
+          paragraphs: [
+            "Depending on applicable law, you may have rights to access, correct, delete, restrict, or object to processing of your personal data. Contact us at coach@ashurxfit.az.",
+          ],
+        },
+        {
+          heading: "8. Children",
+          paragraphs: [
+            "We do not knowingly collect personal data from children under 16. If you believe a child has shared data with us, please get in touch.",
+          ],
+        },
+        {
+          heading: "9. Changes",
+          paragraphs: [
+            "We may update this policy from time to time. Material changes will be reflected on the Site with an updated “Last updated” date.",
+          ],
+        },
+      ],
+      backHomeLabel: "Back to home",
+    } satisfies PrivacyPageContent,
     pricingPlans: [
       {
         name: "STARTER",
@@ -881,6 +1386,9 @@ export const localizedContent = {
       { label: "PROGRAMS", href: "#pricing" },
       { label: "TESTIMONIALS", href: "#testimonials" },
       { label: "FAQ", href: "#faq" },
+      { label: "BMI CALCULATOR", href: "bmi" },
+      { label: "PROTEIN CALCULATOR", href: "protein" },
+      { label: "MACRO CALCULATOR", href: "macro" },
     ] satisfies FooterLink[],
     heroStats: [
       { value: "250+", label: "CLIENTS COACHED" },
